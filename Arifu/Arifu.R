@@ -48,7 +48,7 @@ apply(Q3,2,min)
 
 #-----Q4------#
 
-Q4 <-subset(Q3, no_rows >= 100);Q4
+Q4 <-subset(Q3, no_rows > 100);Q4
  #767learners
 
 #<100
@@ -59,8 +59,7 @@ Q42 <-subset(Q3, no_rows = 100);Q42
 summary(Q42$no_rows)
 
 # Distribution plot
-hist(Q42$no_rows)
-
+hist(Q41$no_rows)
 
 
 date_ts1 <- as.Date(data$created_at)    # convert it to date-time class
