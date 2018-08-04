@@ -65,7 +65,7 @@ date_ts1 <- as.Date(data$created_at)    # convert it to date-time class
 ts1 <- cbind(data$variation_code, date_ts1)
 
  
-ts2<-ts(ts1)#convert to time series
+#ts2<-ts(ts1)#convert to time series
 
 
 date_ts2 <- as.Date(data$created_at) %>%   # convert it to date-time class
@@ -75,13 +75,23 @@ unclass(date_ts2)
 
 date_ts2$mday #extract day of month
 
+#group by day of month
+dayofmonth <- date_ts2$wday #0-6 starting on Sunday
+
+datedf <- cbind(data, dayofmonth)
+
+
+Q6 <- datedf %>% 
+  group_by(dayofmonth) %>%
+  summarise(no_rows = length(variation_code)) ;Q6
 
 #challenge2
 
 # read data file
 data2 <- read.csv(file.choose())
+summary(data2)
 
-#summary(data2)
+
 
 sample <- sample.split(data2,SplitRatio = 0.7)
 train <- subset(data2,sample ==TRUE)
