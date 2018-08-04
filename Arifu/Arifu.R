@@ -49,19 +49,17 @@ apply(Q3,2,min)
 #-----Q4------#
 
 Q4 <-subset(Q3, no_rows > 100);Q4
- #767learners
+str(Q4)
 
-#<100
-Q41 <-subset(Q3, no_rows <= 100);Q41
 
-#=100
-Q42 <-subset(Q3, no_rows = 100);Q42
-summary(Q42$no_rows)
+#-----Q5------#
+#<=100
+Q5 <-subset(Q3, no_rows <= 100);Q5
 
 # Distribution plot
-hist(Q41$no_rows)
+hist(Q5$no_rows)
 
-
+#-----Q6------#
 date_ts1 <- as.Date(data$created_at)    # convert it to date-time class
 
 ts1 <- cbind(data$variation_code, date_ts1)
